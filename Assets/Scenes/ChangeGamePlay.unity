@@ -810,8 +810,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23d4fceb15264594fbd2e61365bdeac4, type: 3}
   - {fileID: 21300000, guid: e27dc4b27cd098d4cb090fa15c2521a3, type: 3}
   - {fileID: 21300000, guid: d4e64b790654a1f45a578702cbc7475e, type: 3}
-  rows: 8
-  cols: 5
+  rows: 9
+  cols: 7
   tileSpacing: 1.1
 --- !u!4 &1417261526
 Transform:
