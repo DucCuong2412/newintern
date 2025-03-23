@@ -2,7 +2,7 @@
 
 public class TileContainer : MonoBehaviour
 {
-    public static TileContainer Instance; // Singleton instance
+    public static TileContainer Instance; 
 
     private void Awake()
     {
@@ -16,5 +16,5 @@ public class TileContainer : MonoBehaviour
         }
     }
 
-    // Bạn có thể thêm các chức năng quản lý hiển thị tile ở đây nếu cần
+    
 }
