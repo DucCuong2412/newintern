@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TileManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class TileManager : MonoBehaviour
     private List<Tile> selectedTiles = new List<Tile>();
     public List<Transform> targetPositions = new List<Transform>();
     private List<bool> usedPositions = new List<bool>();
+    public GameObject gameover, Wingame, gameObj;
+
 
     public int score = 0;
 
@@ -20,27 +23,34 @@ public class TileManager : MonoBehaviour
             usedPositions.Add(false);
         }
     }
+    private void Update()
+    {
+        CheckWinGame();
+    }
 
     public void SelectTile(Tile tile)
     {
-       
         int availableIndex = FindNextAvailablePosition();
         if (availableIndex == -1)
         {
             Debug.Log("Game Over! Không còn vị trí trống.");
+            gameover.SetActive(true);
+            gameObj.SetActive(false);
+
             return;
         }
 
-        tile.transform.position = targetPositions[availableIndex].position;
-        usedPositions[availableIndex] = true; 
+        // Di chuyển tile đến vị trí mục tiêu
+        tile.MoveTo(targetPositions[availableIndex].position);
+        usedPositions[availableIndex] = true;
 
         selectedTiles.Add(tile);
 
         Debug.Log($"Tile {tile.type} đã được thêm vào vị trí {availableIndex}");
 
-      
         CheckMatch();
     }
+
 
     private int FindNextAvailablePosition()
     {
@@ -49,12 +59,12 @@ public class TileManager : MonoBehaviour
             if (!usedPositions[i])
                 return i;
         }
-        return -1; 
+        return -1;
     }
 
     private void CheckMatch()
     {
-      
+
         Dictionary<string, int> tileCount = new Dictionary<string, int>();
 
         foreach (var tile in selectedTiles)
@@ -71,7 +81,7 @@ public class TileManager : MonoBehaviour
             {
                 Debug.Log($"Matched 3 tiles: {pair.Key}");
                 score += 10;
-                RemoveMatchedTiles(pair.Key); 
+                RemoveMatchedTiles(pair.Key);
                 break;
             }
         }
@@ -79,28 +89,30 @@ public class TileManager : MonoBehaviour
 
     private void RemoveMatchedTiles(string type)
     {
-      
+
         List<Tile> matchedTiles = selectedTiles.FindAll(tile => tile.type == type);
 
         foreach (var tile in matchedTiles)
         {
-           
+
             int index = targetPositions.FindIndex(pos => pos.position == tile.transform.position);
             if (index != -1)
             {
-                usedPositions[index] = false; 
+                usedPositions[index] = false;
             }
 
-            Destroy(tile.gameObject);
+            Destroy(tile.gameObject, .5f);
         }
 
-      
+
         selectedTiles.RemoveAll(tile => tile.type == type);
 
-       
+
         ReorganizeTiles();
 
         Debug.Log("Matched tiles đã được xóa và vị trí được giải phóng.");
+ 
+
     }
 
     private void ReorganizeTiles()
@@ -113,7 +125,7 @@ public class TileManager : MonoBehaviour
             usedPositions[i] = false;
         }
 
-       
+
         for (int i = 0; i < remainingTiles.Count; i++)
         {
             Tile tile = remainingTiles[i];
@@ -123,5 +135,29 @@ public class TileManager : MonoBehaviour
         }
 
         Debug.Log("Đã sắp xếp lại các tile còn lại.");
+    }
+    private void CheckWinGame()
+    {
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("tile");
+
+
+        if (gameObjects.Length == 0)
+        {
+
+            Wingame.SetActive(true);
+            gameObj.SetActive(false);
+
+        }
+    }
+
+
+    private void OnGUI()
+    {
+        // Hiển thị điểm lên màn hình
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 32; // Kích thước chữ
+        style.normal.textColor = Color.white; // Màu chữ
+
+        GUI.Label(new Rect(10, 10, 200, 50), $"Score: {score}", style);
     }
 }

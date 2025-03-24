@@ -13,7 +13,7 @@ public class BoardController : MonoBehaviour
 
     private Board m_board;
 
-    private GameManager m_gameManager;
+    private GameManagerUI m_gameManager;
 
     private bool m_isDragging;
 
@@ -31,7 +31,7 @@ public class BoardController : MonoBehaviour
 
     private bool m_gameOver;
 
-    public void StartGame(GameManager gameManager, GameSettings gameSettings)
+    public void StartGame(GameManagerUI gameManager, GameSettings gameSettings)
     {
         m_gameManager = gameManager;
 
@@ -52,17 +52,17 @@ public class BoardController : MonoBehaviour
         FindMatchesAndCollapse();
     }
 
-    private void OnGameStateChange(GameManager.eStateGame state)
+    private void OnGameStateChange(GameManagerUI.eStateGame state)
     {
         switch (state)
         {
-            case GameManager.eStateGame.GAME_STARTED:
+            case GameManagerUI.eStateGame.GAME_STARTED:
                 IsBusy = false;
                 break;
-            case GameManager.eStateGame.PAUSE:
+            case GameManagerUI.eStateGame.PAUSE:
                 IsBusy = true;
                 break;
-            case GameManager.eStateGame.GAME_OVER:
+            case GameManagerUI.eStateGame.GAME_OVER:
                 m_gameOver = true;
                 StopHints();
                 break;

@@ -60,7 +60,7 @@ public class GridManager : MonoBehaviour
                 index++;
 
                
-                var tile = Instantiate(tilePrefab, new Vector3(x * tileSpacing, y * tileSpacing, 0), Quaternion.identity);
+                var tile = Instantiate(tilePrefab, new Vector3(x * tileSpacing, y * tileSpacing, -5), Quaternion.identity);
 
                
                 tile.GetComponent<Tile>().Initialize("Type" + typeIndex, tileSprites[typeIndex]);

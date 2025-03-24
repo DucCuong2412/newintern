@@ -7,9 +7,9 @@ public class LevelTime : LevelCondition
 {
     private float m_time;
 
-    private GameManager m_mngr;
+    private GameManagerUI m_mngr;
 
-    public override void Setup(float value, Text txt, GameManager mngr)
+    public override void Setup(float value, Text txt, GameManagerUI mngr)
     {
         base.Setup(value, txt, mngr);
 
@@ -24,7 +24,7 @@ public class LevelTime : LevelCondition
     {
         if (m_conditionCompleted) return;
 
-        if (m_mngr.State != GameManager.eStateGame.GAME_STARTED) return;
+        if (m_mngr.State != GameManagerUI.eStateGame.GAME_STARTED) return;
 
         m_time -= Time.deltaTime;
 

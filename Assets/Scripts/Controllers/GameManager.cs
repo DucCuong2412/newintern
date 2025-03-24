@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManagerUI : MonoBehaviour
 {
     public event Action<eStateGame> StateChangedAction = delegate { };
 
