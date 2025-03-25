@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoWin : MonoBehaviour
 {
-    public float delayBetweenSelections = 0.5f; // Thời gian trễ giữa mỗi lần chọn tile
+   
 
     private void Start()
     {
@@ -57,7 +57,7 @@ public class AutoWin : MonoBehaviour
                             Debug.Log($"Auto chọn tile: {tile.type}");
 
                             // Chờ một khoảng thời gian trước khi chọn tile tiếp theo
-                            yield return new WaitForSeconds(delayBetweenSelections);
+                            yield return new WaitForSeconds(0.5f);
                         }
                     }
                 }

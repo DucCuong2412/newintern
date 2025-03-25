@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4842092368670476088}
   - component: {fileID: 5685653053237757357}
   - component: {fileID: 5627350972124667300}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: itemNormal05
   m_TagString: tile
   m_Icon: {fileID: 0}
@@ -186,8 +186,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -465408421
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Time: 0.2
   m_PreviewTimeScale: 1

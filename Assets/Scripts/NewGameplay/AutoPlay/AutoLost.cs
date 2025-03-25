@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AutoLost : MonoBehaviour
 {
-    public float delayBetweenSelections = 0.5f; // Thời gian trễ giữa mỗi lần chọn tile
+   
 
     private void Start()
     {
@@ -40,7 +40,7 @@ public class AutoLost : MonoBehaviour
                     foundTileToSelect = true;
 
                     // Chờ một khoảng thời gian trước khi tiếp tục
-                    yield return new WaitForSeconds(delayBetweenSelections);
+                    yield return new WaitForSeconds(0.5f);
 
                     break; // Thoát khỏi vòng lặp sau khi chọn 1 tile
                 }
