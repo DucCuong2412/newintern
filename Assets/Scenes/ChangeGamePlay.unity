@@ -2973,6 +2973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd04a3a84e8cbe42b3295aacc28c5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelLost: {fileID: 1080660296}
 --- !u!1 &1500283315
 GameObject:
   m_ObjectHideFlags: 0

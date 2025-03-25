@@ -4,6 +4,8 @@ using UnityEngine;
 public class checkLost : MonoBehaviour
 {
     public static checkLost Instance;
+    public GameObject panelLost;
+
 
     private void Start()
     {
@@ -23,8 +25,9 @@ public class checkLost : MonoBehaviour
 
     IEnumerator waitforMinute()
     {
-        Debug.Log("đã hết 1 phút)");
 
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(60f);
+        Debug.Log("đã hết 1 phút)");
+        panelLost.SetActive(true);
     }
 }
